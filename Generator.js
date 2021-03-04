@@ -1,11 +1,12 @@
 export class NPC{
-    constructor(){
-    
-
+    constructor(name,location,item){
+        this.name = name;
+        this.location = location;
+        this.item = item;
 
     }
 
-function RPSGen(PlayerMove){
+ RPSGen(PlayerMove){
     //e.g.{rock:2,scissors:1, paper:0}
     var ComputerMove = Math.floor(Math.random() * 3);
     let result;
