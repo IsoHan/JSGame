@@ -21,6 +21,11 @@ export class NPC{
 }
 }
 
+export function NPCEncounter(){
+    console.log("Hello! Before you pass you must defeat me in a game of Rock,Paper, Scissors");
+
+}
+
 export function DragonGuess(PlayerGuess,numObjects){
     //numObjects is passed to determine odds given
     var DragonMove = Math.floor((Math.random() * (6-numObjects))+1)
