@@ -23,7 +23,7 @@ export class NPC{
 
 export function NPCEncounter(){
     console.log("Hello! Before you pass you must defeat me in a game of Rock,Paper, Scissors");
-
+    
 }
 
 export function DragonGuess(PlayerGuess,numObjects){
