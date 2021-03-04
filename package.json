@@ -8,6 +8,8 @@
   },
   "author": "Isobel Hanna, Asel Perera, Shay",
   "license": "ISC",
-  "type": "module"
-
+  "type": "module",
+  "dependencies": {
+    "prompt": "^1.1.0"
+  }
 }
