@@ -17,6 +17,7 @@ RPSGen(PlayerMove){
     //e.g.{rock:2,scissors:1, paper:0}
     var ComputerMove = Math.floor(Math.random() * 3);
     let result;
+    
     if ((ComputerMove + 1) % 3 == PlayerMove){
         result = "Win!";
     }else if(ComputerMove == PlayerMove){
