@@ -3,34 +3,52 @@ let prompter = prompt();
 
 console.log("Welcome to our game!");
 let userDifficulty = prompter("Please select your level of difficulty: easy, medium, hard. >>>> ").toLowerCase();
-console.log(userDifficulty);
+console.log("Difficulty selected:", userDifficulty);
+
+class Game {
+    constructor(userDifficulty) {
+        this.difficulty = userDifficulty;
+        this.map = new Map(this.difficultyTranslator[userDifficulty]);
+    };
+
+    difficultyTranslator = {
+        "easy": {
+            lenOfArr: 10,
+            numOfNpc: 2
+        },
+        "medium": {
+            lenOfArr: 15,
+            numOfNpc: 5
+        },
+        "hard": {
+            lenOfArr: 20,
+            numOfNpc: 10
+        }
+    };
+}
 
 class Map {
-    constructor(difficulty) {
-        
-    }
+    constructor(difficultyObj) {
+        this.mapArray = new Array(difficultyObj.lenOfArr).fill(0);
+        console.log(this.mapArray);
+    };
     // Roll dice
     // Check if landed on NPC
 }
 
-let newGame = Map(userDifficulty);
+class Player {
+    constructor() {
+        this.items = 0;
+        this.position = 0;
+    };
+}
+
+//let player = new Player();
+
+let game = new Game(userDifficulty);
+console.log(game.map.mapArray.length);
 
 /*
-
-let difficultyObj = {
-    "easy": {
-        lenOfArr: 10,
-        numOfNpc: 2
-    },
-    "medium": {
-        lenOfArr: 15,
-        numOfNpc: 5
-    },
-    "hard": {
-        lenOfArr: 20,
-        numOfNpc: 10
-    }
-};
 
 //let userChoice = difficultyObj[answer];
 let userInput = difficultyObj[answer].lenOfArr;
