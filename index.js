@@ -8,6 +8,9 @@ console.log("Difficulty selected:", userDifficulty);
 class Game {
     constructor(userDifficulty) {
         this.difficulty = userDifficulty;
+        //this.lenOfArr = this.difficultyTranslator[userDifficulty].lenOfArr;
+        //this.numOfNpc = this.difficultyTranslator[userDifficulty].numOfNpc;
+        this.endGame = false;
         // Initiate map
         this.map = new Map(this.difficultyTranslator[userDifficulty]);
 
@@ -16,7 +19,7 @@ class Game {
 
         // Initiate NPCs
         for (let i = 0; i < this.difficultyTranslator[userDifficulty].numOfNpc; i++) {
-            this.npc = new NPC();
+            this[`npc${i}`] = new NPC(this.difficultyTranslator[userDifficulty].lenOfArr);
         }
 
     };
@@ -28,11 +31,11 @@ class Game {
         },
         "medium": {
             lenOfArr: 15,
-            numOfNpc: 5
+            numOfNpc: 4
         },
         "hard": {
             lenOfArr: 20,
-            numOfNpc: 10
+            numOfNpc: 9
         }
     };
 
@@ -41,11 +44,23 @@ class Game {
     }
 
     rolldice() {
-        // Do something
-
-        // update position;
-        // set to true to break
+        let roll = (Math.floor(Math.random()*6) + 1);
+        return roll;
     };
+
+    playRound() {
+        this.player.position += this.rolldice();
+        console.log("New player position:", this.player.position);
+
+        for (let i = 0; i < this.difficultyTranslator[this.difficulty].numOfNpc; i++) {
+            if (this.player.position === this[`npc${i}`].position) {
+                console.log("RPS");
+                break;
+            }
+        }
+
+        game.endGame = true;
+    }
 }
 
 class Map {
@@ -66,8 +81,9 @@ class Player {
 }
 
 class NPC {
-    constructor(position) {
-        this.position = position;
+    constructor(lenOfArr) {
+        this.position = Math.floor(Math.random()*lenOfArr)+1;
+        this.RPSChoice = Math.floor(Math.random()*3);
     }
 }
 
@@ -76,74 +92,10 @@ class Dragon {
 }
 
 let game = new Game(userDifficulty);
-// console.log(game);
+console.log(game);
 
 game.startGame();
 
-
-/*
-game.startgame();
-while(false) {
-    game.rolldice();
+while(!game.endGame) {
+    game.playRound();
 }
-*/
-
-
-
-
-
-/*
-
-//let userChoice = difficultyObj[answer];
-let userInput = difficultyObj[answer].lenOfArr;
-let npcNum = difficultyObj[answer].numOfNpc;
-
-const createGame = (userInput, npcNum) => {
-
-    let sizeOfGame = new Array(userInput).fill(0);
-    
-    for (let i = 0; i <= npcNum - 1 ; i++) {
-        // code for generating random number 
-        let x = Math.floor(Math.random()* userInput ) + 1;
-        sizeOfGame[x] = 1;
-
-        // Could add if statement to check if position has already beeen filled with a 1
-    }
-    
-    // Array will look something like [0, 1, 0, 0, 0, 1, 0, 0, 0, 0] (on easy mode)
-    return sizeOfGame;
-}
-
-let playerPosition = 0;
-let numOfNpcWins = 0;
-
-while (playerPosition < ) {
-
-}
-
-
-// DiceRoll
-const rollDice = () => {
-    return Math.floor(Math.random(7)) + 1
-}
-
-//const playGame = () = {
-
-  get userInput which determines the size of the array e.g 10 and number of ncps e.g 2
-
-  game array = createGame(userInput)
-
-  while (playerPosition < gameArray.length) {
-
-    roll the dice which moves playposition , need to check if gameArray[playPosition] == 1 {
-        call npc encounter function which will have an effect on......
-    }
-  }
-
-
-} 
-
-*/
-
-
-
