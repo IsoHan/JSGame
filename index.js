@@ -8,7 +8,17 @@ console.log("Difficulty selected:", userDifficulty);
 class Game {
     constructor(userDifficulty) {
         this.difficulty = userDifficulty;
+        // Initiate map
         this.map = new Map(this.difficultyTranslator[userDifficulty]);
+
+        // Initiate player
+        this.player = new Player();
+
+        // Initiate NPCs
+        for (let i = 0; i < this.difficultyTranslator[userDifficulty].numOfNpc; i++) {
+            this.npc = new NPC();
+        }
+
     };
 
     difficultyTranslator = {
@@ -25,12 +35,23 @@ class Game {
             numOfNpc: 10
         }
     };
+
+    startGame() {
+        console.log("You are in a wooded clearing.");
+    }
+
+    rolldice() {
+        // Do something
+
+        // update position;
+        // set to true to break
+    };
 }
 
 class Map {
     constructor(difficultyObj) {
         this.mapArray = new Array(difficultyObj.lenOfArr).fill(0);
-        console.log(this.mapArray);
+        //console.log(this.mapArray);
     };
     // Roll dice
     // Check if landed on NPC
@@ -38,15 +59,38 @@ class Map {
 
 class Player {
     constructor() {
+        this.playerName = prompter("What is your name?");
         this.items = 0;
         this.position = 0;
     };
 }
 
-//let player = new Player();
+class NPC {
+    constructor(position) {
+        this.position = position;
+    }
+}
+
+class Dragon {
+
+}
 
 let game = new Game(userDifficulty);
-console.log(game.map.mapArray.length);
+// console.log(game);
+
+game.startGame();
+
+
+/*
+game.startgame();
+while(false) {
+    game.rolldice();
+}
+*/
+
+
+
+
 
 /*
 
