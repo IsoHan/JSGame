@@ -5,11 +5,19 @@ export class NPC{
         this.item = item;
 
     }
+     NPCEncounter(){
+        console.log("Hello, I am {$this.name%}! Before you pass you must defeat me in a game of Rock,Paper, Scissors");
+    
+    }
 
- RPSGen(PlayerMove){
+ 
+}
+
+RPSGen(PlayerMove){
     //e.g.{rock:2,scissors:1, paper:0}
     var ComputerMove = Math.floor(Math.random() * 3);
     let result;
+    
     if ((ComputerMove + 1) % 3 == PlayerMove){
         result = "Win!";
     }else if(ComputerMove == PlayerMove){
@@ -19,12 +27,8 @@ export class NPC{
     }
     return(result);
 }
-}
 
-export function NPCEncounter(){
-    console.log("Hello! Before you pass you must defeat me in a game of Rock,Paper, Scissors");
-    
-}
+
 
 export function DragonGuess(PlayerGuess,numObjects){
     //numObjects is passed to determine odds given
