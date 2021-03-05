@@ -1,30 +1,19 @@
-import * as readline from 'readline';
-//import * as prompt from 'prompt';
-
-/*
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
-*/
+import prompt from "prompt-sync";
+let prompter = prompt();
 
 console.log("Welcome to our game!");
+let userDifficulty = prompter("Please select your level of difficulty: easy, medium, hard. >>>> ").toLowerCase();
+console.log(userDifficulty);
 
-/*
-rl.question("Please select your level of difficulty: Easy, Medium, Hard", (answer) => {
-    //Need to convert to lower case
-    let lowerCaseAnswer = answer.toLowerCase();
-    rl.close();
-})
-*/
+class Map {
+    constructor(difficulty) {
+        
+    }
+    // Roll dice
+    // Check if landed on NPC
+}
 
-// var userDifficulty = prompt("Please select your level of difficulty (easy, medium, hard): ");
-
-//const prompt = require('prompt-sync')();
-import * as prompt from 'prompt';
- 
-const name = prompt('What is your name?');
-console.log(`Hey there ${name}`)
+let newGame = Map(userDifficulty);
 
 /*
 
