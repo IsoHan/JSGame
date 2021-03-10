@@ -50,11 +50,11 @@ class Game {
         return roll;
     };
 
-    RPSGen(computerMove){
+    RPSGen(computerMove,NPCname){
         //e.g.{rock:2,scissors:1, paper:0}
         var playerMove = Math.floor(Math.random() * 3);
         let result;
-        
+        console.log(`I am ${NPCname}`)
         if ((computerMove + 1) % 3 == playerMove){
             result = +1;
         }else if(computerMove == playerMove){
@@ -95,7 +95,7 @@ class Game {
         for (let i = 0; i < this.difficultyTranslator[this.difficulty].numOfNpc; i++) {
             if (this.player.position === this[`npc${i}`].position) {
                 console.log("RPS");
-                this.player.items += this.RPSGen(this[`npc${i}`].RPSChoice);
+                this.player.items += this.RPSGen(this[`npc${i}`].RPSChoice,this[`npc${i}`].name);
                 this.player.items = Math.max(this.player.items, 0); // Stops player items going negative
                 console.log(this.player.items);
                 break;

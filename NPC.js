@@ -1,58 +1,42 @@
-export class NPC{
-    constructor(){
-        this.name = NPC.Generatename();
-        //this.sendBackto = sendBackto?
-        
-        //this.item = item.Generateitem();
-
+export class GenNPC{
+    constructor(lenOfArr) {
+        this.position = Math.floor(Math.random()*lenOfArr)+1;
+        this.RPSChoice = Math.floor(Math.random()*3);
+        this.name = this.Generatename();
     }
-    
+
     static Generatename(){
-      let Firstname = ["Gold","High","Old","Wild","Lonely"]
-      let Lastname = ["Witch","Sage","Joker","Troll"]
-      let FNnum = Math.floor(Math.random() * 5);
-      let LNnum = Math.floor(Math.random() * 4);
-      return(Firstname[FNnum]+' ' +Lastname[LNnum]);
+        let Firstname = ["Gold","High","Old","Wild","Lonely"]
+        let Lastname = ["Witch","Sage","Joker","Troll"]
+        let FNnum = Math.floor(Math.random() * 5);
+        let LNnum = Math.floor(Math.random() * 4);
+        return(Firstname[FNnum]+' ' +Lastname[LNnum]);
+  
+      }
+
+
+}
+
+
+export class NPCInteraction{
+    constuction(){
+        this.intro = this.introduction();
 
     }
-    /*
-    ItemGenerator(){}
-    */
-    NPCIntro(){
-       
-      return(`I am the ${this.name}. You must beat me to pass.`);
-    
+
+    introduction(){
+        console.log("Greetings! I am [name] you must beat me at Boulder, scroll scissors")
     }
 
-    RPSGen(PlayerMove){
-    //e.g.{rock:2,scissors:1, paper:0}
-    //make it run 3 times 
-    
-    var ComputerMove = Math.floor(Math.random() * 3);
-    let result;
-    if ((ComputerMove + 1) % 3 == PlayerMove){
-        result = "Win!";
-        this.GiveObject();
-        //need this? 
-    }else if(ComputerMove == PlayerMove){
-        result = "Draw ";
-        //PlayerMove() (repeat function?)
-    }else{
-        result = "loss";
-        this.SendPlayerBack();
-    }
-    console.log(result);
+    GiveObj(){
+        Newplayer.PlayerScore.AddObject();
     }
 
-    GiveObject(){
-        //Player.NumItems +=1?
+    playGame(){
         
     }
 
-    SendPlayerBack(){
-        //what to pass to this?
-    //Map.UpdatePlayerPosition(this.sendbackto)
-    //or Player.poisiton -= number to send back 
-    }
+
+
 
 }
