@@ -1,5 +1,5 @@
 import prompt from "prompt-sync";
-import { Game } from "./game.js"
+import { Game } from "./classes/game.js"
 
 let prompter = prompt();
 
