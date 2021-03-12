@@ -12,4 +12,20 @@ export class NPC {
         let LNnum = Math.floor(Math.random() * 4);
         return(Firstname[FNnum]+' ' +Lastname[LNnum]);
     }
+
+    RPSGen(computerMove){
+        //e.g.{rock:2,scissors:1, paper:0}
+        var playerMove = Math.floor(Math.random() * 3);
+        let result;
+        
+        if ((computerMove + 1) % 3 == playerMove){
+            result = +1;
+        }else if(computerMove == playerMove){
+            result = 0;
+        }else{
+            result = -1;
+        }
+        console.log(result);
+        return(result);
+    }
 }

@@ -51,6 +51,7 @@ export class Game {
         return roll;
     };
 
+    /*
     RPSGen(computerMove){
         //e.g.{rock:2,scissors:1, paper:0}
         var playerMove = Math.floor(Math.random() * 3);
@@ -66,6 +67,7 @@ export class Game {
         console.log(result);
         return(result);
     }
+    */
 
     playRound() {
         this.player.position += this.rolldice();
@@ -74,7 +76,7 @@ export class Game {
         for (let i = 0; i < this.difficultyTranslator[this.difficulty].numOfNpc; i++) {
             if (this.player.position === this[`npc${i}`].position) {
                 console.log("RPS");
-                this.player.items += this.RPSGen(this[`npc${i}`].RPSChoice);
+                this.player.items += this[`npc${i}`].RPSGen(this[`npc${i}`].RPSChoice);
                 this.player.items = Math.max(this.player.items, 0); // Stops player items going negative
                 console.log(this.player.items);
                 break;
