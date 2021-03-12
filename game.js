@@ -67,28 +67,6 @@ export class Game {
         return(result);
     }
 
-    fightDragon(playerItems) {
-        let odds = 6 - playerItems;
-        let dragonMove = Math.floor((Math.random() * odds) + 1);
-
-        let playerMove = parseInt(prompter(`Please guess a number between 1 and ${odds}: >>>> `));
-    
-        if (dragonMove === playerMove){
-            console.log(`You guessed: ${playerMove}`);
-            console.log(`Dragon guessed: ${dragonMove}`);
-            console.log("You have won the game!");
-            this.endGame = true;
-        }else{
-            console.log(`You guessed: ${playerMove}`);
-            console.log(`Dragon guessed: ${dragonMove}`);
-            console.log("You lose n00b");
-            //this.endGame = true;
-            // Add option to let user play again
-            this.player.position = 0;
-            this.player.items = 0;
-        }
-    }
-
     playRound() {
         this.player.position += this.rolldice();
         console.log("New player position:", this.player.position);
@@ -105,7 +83,7 @@ export class Game {
 
         // Check if player is >= end
         if (this.player.position >= this.difficultyTranslator[this.difficulty].lenOfArr-1) {
-            this.fightDragon(this.player.items);
+            this.endGame = this.player.fightDragon(this.player.items);
         }
     }
     
