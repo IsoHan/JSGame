@@ -1,3 +1,6 @@
+import inquirer from "inquirer";
+
+
 export class NPC {
     constructor(lenOfArr) {
         this.position = Math.floor(Math.random()*lenOfArr)+1;
@@ -13,19 +16,36 @@ export class NPC {
         return(Firstname[FNnum]+' ' +Lastname[LNnum]);
     }
 
-    RPSGen(computerMove){
-        //e.g.{rock:2,scissors:1, paper:0}
-        var playerMove = Math.floor(Math.random() * 3);
-        let result;
+     RPSGen(computerMove) {
+        inquirer.prompt({
+            type: "list",
+            message: "Rock, paper or scissors?",
+            name: "playerMove",
+            choices: ["Rock", "Paper", "Scissors"]
+        })
+        .then((playerMove) => {
+            let moveDictionary = {
+                "Rock": 2,
+                "Scissors": 1,
+                "Paper": 0
+            }
+
+            let playerMoveNumber = moveDictionary[playerMove["playerMove"]]
+            console.log(">>>> Playermovenumber:", playerMoveNumber);
+
+            let result;
         
-        if ((computerMove + 1) % 3 == playerMove){
-            result = +1;
-        }else if(computerMove == playerMove){
-            result = 0;
-        }else{
-            result = -1;
-        }
-        console.log(result);
-        return(result);
+            if ((computerMove + 1) % 3 == playerMoveNumber){
+                result = +1;
+            }else if(computerMove == playerMoveNumber){
+                result = 0;
+            }else{
+                result = -1;
+            }
+            console.log(result);
+            return result;
+        })
+
+
     }
-}
+} // Class-End bracket

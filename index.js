@@ -20,10 +20,6 @@ let userDifficulty = await inquirer.prompt({
     return response["response"]
 })
 
-// Difficulty Selection
-// let userDifficulty = prompter("Please select your level of difficulty: easy, medium, hard. >>>> ").toLowerCase();
-// console.log("Difficulty selected:", userDifficulty);
-
 let game = new Game(userDifficulty);
 console.log(game);
 

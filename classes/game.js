@@ -51,14 +51,15 @@ export class Game {
         return roll;
     };
 
-    playRound() {
+    async playRound() {
         this.player.position += this.rolldice();
         console.log("New player position:", this.player.position);
 
         for (let i = 0; i < this.difficultyTranslator[this.difficulty].numOfNpc; i++) {
             if (this.player.position === this[`npc${i}`].position) {
-                console.log("RPS");
-                this.player.items += this[`npc${i}`].RPSGen(this[`npc${i}`].RPSChoice);
+                
+                const result = await this[`npc${i}`].RPSGen(this[`npc${i}`].RPSChoice);
+                this.player.items += result
                 this.player.items = Math.max(this.player.items, 0); // Stops player items going negative
                 console.log(this.player.items);
                 break;
