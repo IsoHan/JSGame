@@ -51,24 +51,6 @@ export class Game {
         return roll;
     };
 
-    /*
-    RPSGen(computerMove){
-        //e.g.{rock:2,scissors:1, paper:0}
-        var playerMove = Math.floor(Math.random() * 3);
-        let result;
-        
-        if ((computerMove + 1) % 3 == playerMove){
-            result = +1;
-        }else if(computerMove == playerMove){
-            result = 0;
-        }else{
-            result = -1;
-        }
-        console.log(result);
-        return(result);
-    }
-    */
-
     playRound() {
         this.player.position += this.rolldice();
         console.log("New player position:", this.player.position);
